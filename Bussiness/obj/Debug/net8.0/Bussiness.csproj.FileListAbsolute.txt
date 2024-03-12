@@ -17,3 +17,4 @@ C:\Users\ASUS\Desktop\Fresh\Bussiness\obj\Debug\net8.0\Bussiness.dll
 C:\Users\ASUS\Desktop\Fresh\Bussiness\obj\Debug\net8.0\refint\Bussiness.dll
 C:\Users\ASUS\Desktop\Fresh\Bussiness\obj\Debug\net8.0\Bussiness.pdb
 C:\Users\ASUS\Desktop\Fresh\Bussiness\obj\Debug\net8.0\ref\Bussiness.dll
+C:\Users\ASUS\Desktop\Fresh\Bussiness\obj\Debug\net8.0\Bussiness.sourcelink.json

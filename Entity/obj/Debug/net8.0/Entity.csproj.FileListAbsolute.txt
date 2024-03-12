@@ -13,3 +13,4 @@ C:\Users\ASUS\Desktop\Fresh\Entity\obj\Debug\net8.0\ref\Entity.dll
 C:\Users\ASUS\Desktop\Fresh\Entity\bin\Debug\net8.0\Core.dll
 C:\Users\ASUS\Desktop\Fresh\Entity\bin\Debug\net8.0\Core.pdb
 C:\Users\ASUS\Desktop\Fresh\Entity\obj\Debug\net8.0\Entity.csproj.Up2Date
+C:\Users\ASUS\Desktop\Fresh\Entity\obj\Debug\net8.0\Entity.sourcelink.json

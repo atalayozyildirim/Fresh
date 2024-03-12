@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Fresh.Controllers;
 
 [ApiController]
-public class PostController: ControllerBase
+public class PostController : ControllerBase
 {
     private readonly IPostService _postService;
 
@@ -21,12 +21,6 @@ public class PostController: ControllerBase
     {
         return Ok(new { message = "test" });
     }
-    
-    [Route("/posts/add")]
-    [HttpPost]
-    public async Task<IActionResult> Add(Post model)
-    {
-        var add = _postService.Add(model);
-        return Ok(new { message = "Post added" , data = add });
-    }
+
+
 }

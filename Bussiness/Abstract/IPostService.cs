@@ -4,9 +4,9 @@ namespace Bussnies.Abstract;
 
 public interface IPostService
 {
-    Task Add(Post post);
-    Task Delete(Post post);
-    Task Update(Post post);
+    void Add(Post post);
+    void Delete(Post post);
+    void Update(Post post);
     List<Post> GetAll();
-    Task GetById(int id);
+    void GetById(int id);
 }

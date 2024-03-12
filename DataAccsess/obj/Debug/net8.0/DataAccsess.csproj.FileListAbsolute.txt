@@ -17,3 +17,4 @@ C:\Users\ASUS\Desktop\Fresh\DataAccsess\obj\Debug\net8.0\refint\DataAccsess.dll
 C:\Users\ASUS\Desktop\Fresh\DataAccsess\obj\Debug\net8.0\DataAccsess.pdb
 C:\Users\ASUS\Desktop\Fresh\DataAccsess\obj\Debug\net8.0\DataAccsess.genruntimeconfig.cache
 C:\Users\ASUS\Desktop\Fresh\DataAccsess\obj\Debug\net8.0\ref\DataAccsess.dll
+C:\Users\ASUS\Desktop\Fresh\DataAccsess\obj\Debug\net8.0\DataAccsess.sourcelink.json
