@@ -5,4 +5,9 @@ using Entity.Concrete;
 
 namespace DataAccsess.Concrete.EntityFramework;
 
-public class EfPostDal : EfRepositoryBase<Post, Context>, IPostDal;
+public class EfPostDal : EfRepositoryBase<Post,Context>, IPostDal
+{
+    public EfPostDal(Context context) : base(context)
+    {
+    }
+}

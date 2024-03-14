@@ -5,4 +5,9 @@ using System.Linq.Expressions;
 
 namespace DataAccsess.Concrete.EntityFramework;
 
-public class EfUserDal:EfRepositoryBase<Users,Context>,IUserDal;
+public class EfUserDal:EfRepositoryBase<Users,Context>,IUserDal
+{
+    public EfUserDal(Context context) : base(context)
+    {
+    }
+}

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +12,13 @@ namespace Entity.Concrete
 {
     public class Post: IPost, IEntity
     {
-        public int Id { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public string id { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public int UserId { get; set; }
+        
+        public string user_id { get; set; }
+      
     }
 }

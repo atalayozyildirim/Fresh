@@ -33,7 +33,7 @@ builder.Services.AddAuthentication("Bearer").AddJwtBearer("Bearer", op =>
         ValidateIssuerSigningKey = true,
         ValidIssuer = "https://localhost:5226",
         ValidAudience = "Fresh",
-        IssuerSigningKey = new SymmetricSecurityKey((Encoding.UTF8.GetBytes("PqmoBU-XeuJWdal_cUJac_YfYNttWJxJOKIMXtFDL8A")))
+        IssuerSigningKey = new SymmetricSecurityKey((Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"])))
     };
 });
 

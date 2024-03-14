@@ -10,6 +10,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Fresh.Controllers.PostController",
+    "Method": "Update",
+    "RelativePath": "{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "postModel",
+        "Type": "Fresh.Model.PostModel",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Fresh.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "auth/login",
@@ -18,7 +39,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "user",
+        "Name": "model",
         "Type": "Fresh.Model.LoginModel",
         "IsRequired": true
       }
@@ -27,14 +48,14 @@
   },
   {
     "ContainingType": "Fresh.Controllers.AuthController",
-    "Method": "Auth",
+    "Method": "Register",
     "RelativePath": "auth/register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "user",
+        "Name": "model",
         "Type": "Fresh.Model.RegisterModel",
         "IsRequired": true
       }
@@ -59,6 +80,48 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Fresh.Controllers.PostController",
+    "Method": "Add",
+    "RelativePath": "posts/add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "postModel",
+        "Type": "Fresh.Model.PostModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Fresh.Controllers.PostController",
+    "Method": "Delete",
+    "RelativePath": "posts/delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Fresh.Controllers.PostController",
+    "Method": "Update",
+    "RelativePath": "posts/update",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "postModel",
+        "Type": "Fresh.Model.PostModel",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]
