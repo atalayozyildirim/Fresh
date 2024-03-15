@@ -1,14 +1,11 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using System.Text.Json.Serialization;
-using Bussiness.utils.Rules;
-using Entity.Concrete;
-using FluentValidation;
+﻿using Entity.Concrete;
 using Fresh.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace Fresh.Controllers;
 
@@ -18,13 +15,13 @@ public class AuthController : ControllerBase
 {
     private readonly SignInManager<Users> _signInManager;
     private readonly UserManager<Users> _userManager;
-   
+
 
     public AuthController(SignInManager<Users> signInManager, UserManager<Users> userManager)
     {
         _signInManager = signInManager;
         _userManager = userManager;
-      
+
     }
 
     [HttpGet]
@@ -69,22 +66,22 @@ public class AuthController : ControllerBase
             return BadRequest(new { message = "Gelen veri boş olamaz !" });
         }
         var user = await _userManager.FindByEmailAsync(model.Email);
-        
+
         if (user == null)
         {
             return BadRequest(new { message = "Kullanıcı bulunamadı !" });
         }
-        
-        
-        var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, lockoutOnFailure:false);
 
-        if(result.IsNotAllowed)
+
+        var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, lockoutOnFailure: false);
+
+        if (result.IsNotAllowed)
         {
             return BadRequest(new { message = "Kullanıcı yetkisiz!" });
         }
         if (!result.Succeeded)
         {
-            return BadRequest(new { message =  result.ToString() });
+            return BadRequest(new { message = result.ToString() });
         }
         var claims = new[]
             {
@@ -92,17 +89,17 @@ public class AuthController : ControllerBase
             new Claim(JwtRegisteredClaimNames.Sub, model.Email),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
-            // SECRET KEY
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("PqmoBU-XeuJWdal_cUJac_YfYNttWJxJOKIMXtFDL8A"));
-            // CREDENTIALS
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            // TOKEN
-            var token = new JwtSecurityToken("https://localhost:5226",
-                "Fresh",
-                claims,
-                expires: DateTime.Now.AddMinutes(30),
-                signingCredentials: creds);
-            
+        // SECRET KEY
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("PqmoBU-XeuJWdal_cUJac_YfYNttWJxJOKIMXtFDL8A"));
+        // CREDENTIALS
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        // TOKEN
+        var token = new JwtSecurityToken("https://localhost:5226",
+            "Fresh",
+            claims,
+            expires: DateTime.Now.AddMinutes(30),
+            signingCredentials: creds);
+
         return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token) });
     }
 }

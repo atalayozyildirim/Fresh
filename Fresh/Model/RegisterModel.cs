@@ -10,7 +10,7 @@ public class RegisterModel
     public string Email { get; set; }
 
     [Required]
-    [MinLength(6)]  
+    [MinLength(6)]
     [MaxLength(20)]
     [DataType(DataType.Password)]
     public string Password { get; set; }

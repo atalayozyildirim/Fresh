@@ -3,7 +3,7 @@ using Entity.Concrete;
 
 namespace DataAccsess.Abstract;
 
-public interface ILikeDal: IEntityFrameworkRepository<Likes>
+public interface ILikeDal : IEntityFrameworkRepository<Likes>
 {
-    
+
 }

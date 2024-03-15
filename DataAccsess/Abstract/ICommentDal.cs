@@ -3,7 +3,7 @@ using Entity.Concrete;
 
 namespace DataAccsess.Abstract;
 
-public interface ICommentDal:IEntityFrameworkRepository<Comment>
+public interface ICommentDal : IEntityFrameworkRepository<Comment>
 {
-    
+
 }

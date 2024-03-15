@@ -1,5 +1,4 @@
-﻿using Bussiness.Concrete;
-using Bussnies.Abstract;
+﻿using Bussnies.Abstract;
 using Entity.Concrete;
 using Fresh.Model;
 using Microsoft.AspNetCore.Authorization;
@@ -46,7 +45,7 @@ public class PostController : ControllerBase
     {
         if (post == null) return BadRequest(new { message = "Model is null" });
         _postService.Update(post);
-        return Ok(new { message = "Post updated", model = post});
+        return Ok(new { message = "Post updated", model = post });
     }
 
     [Route("/posts/delete")]

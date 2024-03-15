@@ -1,17 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Core.DataAccsess
 {
     public class EfRepositoryBase<TEntity, TContext> : IEntityFrameworkRepository<TEntity>
-        where TEntity : class, IEntity, new()
-        where TContext : DbContext
+            where TEntity : class, IEntity, new()
+            where TContext : DbContext
     {
         private readonly TContext _context;
 
@@ -48,6 +42,11 @@ namespace Core.DataAccsess
             return _context.Set<TEntity>().SingleOrDefault(filter);
         }
 
+        public Task GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
             return filter == null
@@ -55,10 +54,11 @@ namespace Core.DataAccsess
                 : _context.Set<TEntity>().Where(filter).ToList();
         }
 
-        public void GetById(int id)
+        public TEntity GetById(string id)
         {
             var entity = _context.Set<TEntity>().Find(id);
             // Handle the retrieved entity...
+            return entity;
         }
     }
 }

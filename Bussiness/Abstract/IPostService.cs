@@ -8,5 +8,5 @@ public interface IPostService
     void Delete(Post post);
     void Update(Post post);
     List<Post> GetAll();
-    void GetById(int id);
+    Post GetById(string id);
 }

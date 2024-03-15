@@ -1,11 +1,9 @@
-﻿using System.Linq.Expressions;
-using Core.DataAccsess;
-using DataAccsess.Abstract;
+﻿using Core.DataAccsess;
 using Entity.Concrete;
 
 namespace DataAccsess.Concrete.EntityFramework;
 
-public class EfLikeDal : EfRepositoryBase<Likes,Context>
+public class EfLikeDal : EfRepositoryBase<Likes, Context>
 {
     public EfLikeDal(Context context) : base(context)
     {

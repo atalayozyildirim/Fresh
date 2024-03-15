@@ -10,27 +10,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Fresh.Controllers.PostController",
-    "Method": "Update",
-    "RelativePath": "{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "postModel",
-        "Type": "Fresh.Model.PostModel",
-        "IsRequired": true
-      },
-      {
-        "Name": "id",
-        "Type": "",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "Fresh.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "auth/login",
@@ -73,6 +52,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Fresh.Controllers.CommentController",
+    "Method": "Index",
+    "RelativePath": "comment",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Fresh.Controllers.CommentController",
+    "Method": "Add",
+    "RelativePath": "comment/add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "comment",
+        "Type": "Entity.Concrete.Comment",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Fresh.Controllers.PostController",
     "Method": "Index",
     "RelativePath": "posts",
@@ -112,16 +117,26 @@
     "ContainingType": "Fresh.Controllers.PostController",
     "Method": "Update",
     "RelativePath": "posts/update",
-    "HttpMethod": "",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "postModel",
-        "Type": "Fresh.Model.PostModel",
+        "Name": "post",
+        "Type": "Entity.Concrete.Post",
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Fresh.Controllers.ProfilController",
+    "Method": "Index",
+    "RelativePath": "profile",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]

@@ -1,11 +1,10 @@
-﻿using System.Linq.Expressions;
-using Core.DataAccsess;
+﻿using Core.DataAccsess;
 using DataAccsess.Abstract;
 using Entity.Concrete;
 
 namespace DataAccsess.Concrete.EntityFramework;
 
-public class EfCommentDal : EfRepositoryBase<Comment,Context>
+public class EfCommentDal : EfRepositoryBase<Comment, Context>, ICommentDal
 {
     // EfCommentDal sınıfının bir yapıcısı (constructor) bulunmaktadır.
     // Bu yapıcı, Context tipinde bir parametre alır ve bu parametreyi base(context) ile temel sınıfa yani EfRepositoryBase<Comment,Context> sınıfına gönderir.

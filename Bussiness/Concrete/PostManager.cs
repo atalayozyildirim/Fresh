@@ -1,9 +1,7 @@
 ﻿using Bussiness.utils.Rules;
 using Bussnies.Abstract;
-using Core.DataAccsess;
 using DataAccsess.Abstract;
 using Entity.Concrete;
-using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace Bussiness.Concrete;
 
@@ -32,7 +30,7 @@ public class PostManager : IPostService
     {
 
         if (post == null) throw new ArgumentNullException("post is null");
-        
+
         var data = _postDal.Get(p => p.id == post.id);
         if (data == null) throw new ArgumentNullException("Boyle bir post yok");
         _postDal.Delete(data);
@@ -43,12 +41,13 @@ public class PostManager : IPostService
         return _postDal.GetAll();
     }
 
-    public void GetById(int id)
+    public Post GetById(string id)
     {
-        if(id == null) throw new ArgumentNullException("id is null");
-        _postDal.GetById(id);
+        if (id == null) throw new ArgumentNullException("id is null");
+        return _postDal.GetById(id);
+        
     }
-
+    
     public void Update(Post post)
     {
         // mola 

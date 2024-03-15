@@ -11,7 +11,7 @@ public interface IEntityFrameworkRepository<TEntity> where TEntity : IEntity, ne
     List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null);
     // kullancı  = null olmadıgı için boş geçemez filtre yapmalı
     TEntity Get(Expression<Func<TEntity, bool>> filter);
-    void GetById(int id);
+    TEntity GetById(string id);
 
 
-}  
+}

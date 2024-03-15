@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace Bussiness.utils.Rules;
 
-public class PostValidator: AbstractValidator<Post>
+public class PostValidator : AbstractValidator<Post>
 {
     public PostValidator()
     {

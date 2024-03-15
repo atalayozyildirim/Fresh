@@ -3,7 +3,7 @@ using Entity.Concrete;
 
 namespace DataAccsess.Abstract;
 
-public interface IPostDal:IEntityFrameworkRepository<Post>
+public interface IPostDal : IEntityFrameworkRepository<Post>
 {
-    
+
 }

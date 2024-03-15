@@ -1,15 +1,13 @@
-using System.Text;
 using Bussiness.Concrete;
 using Bussiness.utils.Rules;
 using Bussnies.Abstract;
-using DataAccsess;
 using DataAccsess.Abstract;
 using DataAccsess.Concrete.EntityFramework;
 using Entity.Concrete;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,10 +16,18 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IPostService, PostManager>();
 builder.Services.AddScoped<IPostDal, EfPostDal>();
+builder.Services.AddScoped<IUserService, UserManager>();
+builder.Services.AddScoped<ICommentService, CommentManager>();
+builder.Services.AddScoped<IProfileService, ProfileManager>();
+builder.Services.AddScoped<IProfilDal, EfProfileDal>();
+builder.Services.AddScoped<ICommentDal, EfCommentDal>();
 builder.Services.AddScoped<PostValidator>();
+builder.Services.AddScoped<ProfileValidator>();
+builder.Services.AddScoped<CommentValidator>();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllers();
 builder.Services.AddDbContext<Context>((e) => e.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=mango;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"));
-builder.Services.AddDefaultIdentity<Users>(op => op.SignIn.RequireConfirmedAccount =false)
+builder.Services.AddDefaultIdentity<Users>(op => op.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<Context>();
 builder.Services.AddAuthentication("Bearer").AddJwtBearer("Bearer", op =>
 {

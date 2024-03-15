@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-public class Context: IdentityDbContext<Users>
+public class Context : IdentityDbContext<Users>
 {
-    public Context(DbContextOptions<Context> options): base(options)
+    public Context(DbContextOptions<Context> options) : base(options)
     {
     }
     public DbSet<Post> Post { get; set; }
