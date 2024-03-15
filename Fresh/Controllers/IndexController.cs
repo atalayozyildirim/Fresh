@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fresh.Controllers
@@ -7,6 +8,7 @@ namespace Fresh.Controllers
     public class IndexController : ControllerBase
     {
         [HttpGet]
+        [AllowAnonymous]
         [Route("/")]
         public async Task<IActionResult> Index()
         {

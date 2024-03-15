@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,8 @@ builder.Services.AddScoped<IUserService, UserManager>();
 builder.Services.AddScoped<ICommentService, CommentManager>();
 builder.Services.AddScoped<IProfileService, ProfileManager>();
 builder.Services.AddScoped<IProfilDal, EfProfileDal>();
+builder.Services.AddScoped<IlikeService,LikeManager>();
+builder.Services.AddScoped<ILikeDal, EfLikeDal>();
 builder.Services.AddScoped<ICommentDal, EfCommentDal>();
 builder.Services.AddScoped<PostValidator>();
 builder.Services.AddScoped<ProfileValidator>();
@@ -73,7 +76,8 @@ builder.Services.ConfigureApplicationCookie(op =>
     op.SlidingExpiration = true;
 
 });
-
+// auth middleware 
+builder.Services.AddControllers(opt => opt.Filters.Add(new AuthorizeFilter()));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,5 +1,6 @@
 using Bussnies.Abstract;
 using Entity.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fresh.Controllers;
@@ -17,6 +18,7 @@ public class ProfilController : ControllerBase
     }
     
     [Route("/profile")]
+    [AllowAnonymous]
     [HttpGet]
     public IActionResult Index()
     {
@@ -31,7 +33,7 @@ public class ProfilController : ControllerBase
         return Ok("ProfilController");
     }
 
-    [HttpPost("/update")]
+    [Route("/update")]
     [HttpPut]
     public IActionResult Update(Profile profile)
     {

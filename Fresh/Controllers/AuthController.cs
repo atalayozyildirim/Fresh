@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Fresh.Controllers;
 
@@ -25,6 +26,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpGet]
+    [AllowAnonymous]
     [Route("/auth/test")]
     public async Task<IActionResult> Auth()
     {
@@ -32,6 +34,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost]
+    [AllowAnonymous]
     [Route("/auth/register")]
     public async Task<IActionResult> Register([FromBody] RegisterModel model)
     {
@@ -57,6 +60,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost]
+    [AllowAnonymous]
     [Route("/auth/login")]
     public async Task<IActionResult> Login([FromBody] LoginModel model)
     {
