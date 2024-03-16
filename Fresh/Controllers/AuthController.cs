@@ -16,14 +16,16 @@ public class AuthController : ControllerBase
 {
     private readonly SignInManager<Users> _signInManager;
     private readonly UserManager<Users> _userManager;
+    private readonly IConfiguration _configuration;
 
 
-    public AuthController(SignInManager<Users> signInManager, UserManager<Users> userManager)
+    public AuthController(SignInManager<Users> signInManager, UserManager<Users> userManager,IConfiguration configuration)
     {
         _signInManager = signInManager;
         _userManager = userManager;
-
+        _configuration = configuration;
     }
+ 
 
     [HttpGet]
     [AllowAnonymous]
@@ -94,12 +96,12 @@ public class AuthController : ControllerBase
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
         // SECRET KEY
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("PqmoBU-XeuJWdal_cUJac_YfYNttWJxJOKIMXtFDL8A"));
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
         // CREDENTIALS
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
         // TOKEN
-        var token = new JwtSecurityToken("https://localhost:5226",
-            "Fresh",
+        var token = new JwtSecurityToken("https://localhost:5226/auth/login",
+            "https://localhost:5226/auth/login",
             claims,
             expires: DateTime.Now.AddMinutes(30),
             signingCredentials: creds);

@@ -1,3 +1,5 @@
 /.idea
 /.vs
 /.vscode
+/Fresh/appsettings.json
+/Fresh/appsettings.Development.json

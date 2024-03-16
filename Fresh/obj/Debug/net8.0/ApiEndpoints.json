@@ -10,6 +10,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Fresh.Controllers.ProfilController",
+    "Method": "Add",
+    "RelativePath": "add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "profile",
+        "Type": "Entity.Concrete.Profile",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Fresh.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "auth/login",
@@ -66,6 +82,38 @@
     "Method": "Add",
     "RelativePath": "comment/add",
     "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "comment",
+        "Type": "Entity.Concrete.Comment",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Fresh.Controllers.CommentController",
+    "Method": "Delete",
+    "RelativePath": "comment/delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "comment",
+        "Type": "Entity.Concrete.Comment",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Fresh.Controllers.CommentController",
+    "Method": "Update",
+    "RelativePath": "comment/update",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -137,6 +185,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Fresh.Controllers.ProfilController",
+    "Method": "Update",
+    "RelativePath": "update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "profile",
+        "Type": "Entity.Concrete.Profile",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]

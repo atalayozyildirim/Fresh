@@ -8,7 +8,6 @@ namespace Fresh.Controllers
     public class IndexController : ControllerBase
     {
         [HttpGet]
-        [AllowAnonymous]
         [Route("/")]
         public async Task<IActionResult> Index()
         {
