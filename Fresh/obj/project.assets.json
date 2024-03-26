@@ -2135,7 +2135,8 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.2",
           "Microsoft.AspNetCore.Identity.UI": "8.0.2",
           "Microsoft.EntityFrameworkCore": "8.0.2",
-          "Microsoft.Extensions.Identity.Core": "8.0.2"
+          "Microsoft.Extensions.Identity.Core": "8.0.2",
+          "Microsoft.IdentityModel.JsonWebTokens": "7.1.2"
         },
         "compile": {
           "bin/placeholder/Core.dll": {}

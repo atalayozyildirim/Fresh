@@ -115,7 +115,14 @@ builder.Services.AddSwaggerGen((x =>
         }
     });
 }));
-
+builder.Services.AddCors(op =>
+{
+    op.AddPolicy("AllowOrigin", builder =>
+        builder.WithOrigins("http://localhost:3000")
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials());
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -125,10 +132,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
 
-app.UseAuthentication();
+app.UseHttpsRedirection();
 app.UseRouting();
+app.UseCors("AllowOrigin");
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DataAccsess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+89e1808234bc4a0e8e7ff912c1540a572d325ad2")]
 [assembly: System.Reflection.AssemblyProductAttribute("DataAccsess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DataAccsess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

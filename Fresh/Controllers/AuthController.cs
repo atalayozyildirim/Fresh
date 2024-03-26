@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
 
@@ -26,7 +27,33 @@ public class AuthController : ControllerBase
         _configuration = configuration;
     }
  
+    private string GenerateRefreshToken()
+    {
+        var randomNumber = new byte[32];
+        using var rng = RandomNumberGenerator.Create();
+        rng.GetBytes(randomNumber);
+        return Convert.ToBase64String(randomNumber);
+    }
 
+    private string GenareteJwtToken(Users user)
+    {
+        var claims = new[]
+        {
+            new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+        };
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+        
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        
+        var token = new JwtSecurityToken("https://localhost:5226/auth/login",
+            "https://localhost:5226/auth/login",
+            claims,
+            expires: DateTime.Now.AddMinutes(30),
+            signingCredentials: creds);
+        
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
     [HttpGet]
     [AllowAnonymous]
     [Route("/auth/test")]
@@ -34,13 +61,18 @@ public class AuthController : ControllerBase
     {
         return Ok("s");
     }
-
+    
     [HttpPost]
     [AllowAnonymous]
     [Route("/auth/register")]
     public async Task<IActionResult> Register([FromBody] RegisterModel model)
     {
+        
+        var refresh = GenerateRefreshToken();
+        
         var users = new Users { Email = model.Email, UserName = model.UserName, PhoneNumber = model.phoneNumber };
+        users.RefreshToken = refresh;
+        
         if (string.IsNullOrEmpty(model.Password))
         {
             return BadRequest(new { message = "Parola boş olamaz" });
@@ -106,6 +138,33 @@ public class AuthController : ControllerBase
             expires: DateTime.Now.AddMinutes(30),
             signingCredentials: creds);
 
-        return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token) });
+        return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token), refreshToken = user.RefreshToken});
+    }
+    [HttpGet]
+    [Route("/auth/logout")]
+    public async Task<IActionResult> Logout()
+    {
+        await _signInManager.SignOutAsync();
+        return Ok(new { message = "Çıkış yapıldı" });
+    }
+
+    [HttpPost]
+    [Route("/auth/refresh")]
+    public async Task<IActionResult> Refresh([FromBody] TokenModel model)
+    {
+        var user = _userManager.Users.SingleOrDefault(u => u.RefreshToken == model.RefreshToken);
+
+       if (user == null)
+       {
+           return BadRequest();
+       }
+       var newToken = GenareteJwtToken(user);
+       var refresh = GenerateRefreshToken();
+
+       return new ObjectResult(new
+       {
+           token = newToken,
+           refreshToken = refresh
+       });
     }
 }
