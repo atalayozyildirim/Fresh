@@ -154,3 +154,5 @@ C:\Users\ASUS\Desktop\Fresh\Fresh\bin\Debug\net8.0\Bussiness.dll
 C:\Users\ASUS\Desktop\Fresh\Fresh\bin\Debug\net8.0\Bussiness.pdb
 C:\Users\ASUS\Desktop\Fresh\Fresh\obj\Debug\net8.0\Fresh.sourcelink.json
 C:\Users\ASUS\Desktop\Fresh\Fresh\bin\Debug\net8.0\appsettings.json
+C:\Users\ASUS\Desktop\Fresh\Fresh\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\ASUS\Desktop\Fresh\Fresh\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll

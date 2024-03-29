@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Fresh.Hubs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.OpenApi.Models;
@@ -30,6 +31,7 @@ builder.Services.AddScoped<ICommentDal, EfCommentDal>();
 builder.Services.AddScoped<PostValidator>();
 builder.Services.AddScoped<ProfileValidator>();
 builder.Services.AddScoped<CommentValidator>();
+builder.Services.AddSignalR();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllers();
 builder.Services.AddDbContext<Context>((e) => e.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=mango;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"));
@@ -118,7 +120,7 @@ builder.Services.AddSwaggerGen((x =>
 builder.Services.AddCors(op =>
 {
     op.AddPolicy("AllowOrigin", builder =>
-        builder.WithOrigins("http://localhost:3000")
+        builder
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials());
@@ -141,6 +143,7 @@ app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
 {
+    endpoints.MapHub<PostHub>("/posts");
     endpoints.MapControllers();
 });
 app.Run();
