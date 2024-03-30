@@ -11,9 +11,5 @@ public class PostHub : Hub
     {
         await Clients.All.SendCoreAsync("ReceivePost", new object?[] { post });
     }
-
-    public async Task GetPost(Post post)
-    {
-        await Clients.All.SendCoreAsync("GetPost", new object?[] { post });
-    }
+    
 }

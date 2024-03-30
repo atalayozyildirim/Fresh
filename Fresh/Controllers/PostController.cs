@@ -12,11 +12,13 @@ namespace Fresh.Controllers;
 public class PostController : ControllerBase
 {
     private readonly IPostService _postService;
+    private readonly Context _Context;
     private readonly IHubContext<PostHub> _hubContext;
 
-    public PostController(IPostService postService, IHubContext<PostHub> hubContext)
+    public PostController(IPostService postService, IHubContext<PostHub> hubContext, Context context)
     {
         _postService = postService;
+        _Context = context;
         _hubContext = hubContext;
     }
 
@@ -31,19 +33,22 @@ public class PostController : ControllerBase
         {
             Title = postModel.Title,
             Content = postModel.Content,
-            user_id = postModel.user_id
+            user_id = postModel.user_id,
+            CreateDate = DateTime.Now,
+            url = postModel.url,
+            image = postModel.image
         };
 
         _postService.Add(posts);
 
         var hub = _hubContext.Clients.All;
 
-        // tüm istemciye yayınla 
 
         await _hubContext.Clients.All.SendAsync("SendPost", posts);
 
         return Ok(new { message = "Post added", model = postModel });
     }
+
     [Route("/posts/update")]
     [HttpPut]
     public IActionResult Update([FromBody] Post post)
@@ -52,14 +57,18 @@ public class PostController : ControllerBase
         _postService.Update(post);
         return Ok(new { message = "Post updated", model = post });
     }
+
     [Route("/posts/get")]
     [AllowAnonymous]
     [HttpGet]
     public IActionResult Get()
     {
-        var posts = _postService.GetAll();
+        var posts = _Context.Post.OrderByDescending(x => x.CreateDate).Take(10).ToList();
         return Ok(new { message = "OK", data = posts });
     }
+   
+
+
     [Route("/posts/get/{id}")]
     [HttpGet]
     [AllowAnonymous]
