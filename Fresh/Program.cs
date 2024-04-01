@@ -25,7 +25,7 @@ builder.Services.AddScoped<IUserService, UserManager>();
 builder.Services.AddScoped<ICommentService, CommentManager>();
 builder.Services.AddScoped<IProfileService, ProfileManager>();
 builder.Services.AddScoped<IProfilDal, EfProfileDal>();
-builder.Services.AddScoped<IlikeService,LikeManager>();
+builder.Services.AddScoped<IlikeService, LikeManager>();
 builder.Services.AddScoped<ILikeDal, EfLikeDal>();
 builder.Services.AddScoped<ICommentDal, EfCommentDal>();
 builder.Services.AddScoped<PostValidator>();

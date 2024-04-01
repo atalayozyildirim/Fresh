@@ -34,6 +34,7 @@ public class PostController : ControllerBase
             Title = postModel.Title,
             Content = postModel.Content,
             user_id = postModel.user_id,
+            Author = postModel.Author,
             CreateDate = DateTime.Now,
             url = postModel.url,
             image = postModel.image

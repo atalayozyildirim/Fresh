@@ -14,6 +14,9 @@ public class PostModel
     
     public DateTime CreateDate { get; set; }
     
+    
+    public string Author { get; set; }
+    
     public string url { get; set; }
     public string image { get; set; }
     
