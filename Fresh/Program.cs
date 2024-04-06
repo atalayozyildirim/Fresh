@@ -19,6 +19,7 @@ var jwtKey = builder.Configuration.GetSection("Jwt:Key").Get<string>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAntiforgery(op => op.HeaderName = "X-CSRF-TOKEN");
 builder.Services.AddScoped<IPostService, PostManager>();
 builder.Services.AddScoped<IPostDal, EfPostDal>();
 builder.Services.AddScoped<IUserService, UserManager>();
